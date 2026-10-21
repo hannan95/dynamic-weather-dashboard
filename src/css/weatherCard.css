@@ -1,0 +1,40 @@
+.currentWeather{
+    /* background-color: black; */
+    /* color: white; */
+    padding: clamp(10px 10vw, 50px);
+    /* background: rgba(255, 255, 255, 0.271); 
+    backdrop-filter: blur(10px);         
+    border: 1px solid rgba(255, 255, 255, 0.214);
+    border-radius: 12px; */
+    padding-left: clamp(20px, 10vw, 100px);
+    /* width: 40%; */
+    
+    
+}
+
+.currentWeather .main2 h2{
+    font-size: 1.5rem
+}
+
+.currentWeather .main2 h2 img{
+    height: 1.5rem;
+    width:1.5rem;
+}
+.currentWeather .main2 h3{
+    font-weight: normal;
+}
+
+.temp{
+    font-size: 2.5rem;
+    /* font-weight: bold; */
+}
+.wholeDay{
+    width: 50vw;
+    height: 300px;
+    /* background-color: orange; */
+
+    margin-left: clamp(20px, 8vw, 80px);
+    display:flex;
+    overflow-x: auto;
+
+}

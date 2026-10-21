@@ -1,0 +1,11 @@
+:root{
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient( 180deg, aqua, white);
+}
+*{
+    box-sizing: border-box;
+    
+}
