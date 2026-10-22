@@ -1,0 +1,4 @@
+.forecast .yesterday{
+    display: flex;
+    align-items: center;
+}

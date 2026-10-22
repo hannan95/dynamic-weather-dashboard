@@ -4,6 +4,8 @@ import {searchWeather} from '../api/file.js'
 import image from '../assets/location.png'
 import '../css/Home.css'
 import WeatherCard from '../components/WeatherCard.jsx'
+import Sunset from '../components/Sunset.jsx'
+import Forecast from '../components/Forecast.jsx'
 
 
 
@@ -60,14 +62,24 @@ export default function Home(){
 
                 {(loading)? <h1>Loading...</h1>:
                     <WeatherCard weather={weather}/>
-
+                    
                 
                 }
                 <div className="sky-shape"></div>
 
             </div>
 
+            <div className="main2">
+                {(loading)? <h1>Loading...</h1>:
+                <Sunset weather={weather}/>}
+            </div>
 
+            <div className="main3">
+                {(loading)? <h1>Loading...</h1>:
+                
+                    <Forecast weather={weather}/>
+                }
+            </div>
 
 
 

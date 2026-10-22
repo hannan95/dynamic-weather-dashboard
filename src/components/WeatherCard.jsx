@@ -10,15 +10,14 @@ import '../css/weatherCard.css'
 
 import HourWeather from './HourWeather.jsx'
 export default function WeatherCard({weather}){
+        console.log('This is a second element',weather)
         const COL = 80   // width of each hour column, in px
         const LINE_H = 60 // height of the line area, in px
         const {isCelcius, setIsCelcius} = useContext(WeatherContext)
 
         let now = new Date()
         const nextDay = now.getHours()
-        console.log(nextDay)
 
-        console.log(weather.forecast.forecastday[0].hour)
         const cityNow = weather.location.localtime_epoch;
 
         const upcoming = weather.forecast.forecastday
@@ -42,11 +41,14 @@ export default function WeatherCard({weather}){
                     </div>
                 </div>
                 <div className="wholeDay">
-                    {upcoming.map((item) => (
-                        <HourWeather key={item.time_epoch} item={item} />
-                    ))}
+                    <div className="box">
+
+                        {upcoming.map((item) => (
+                            <HourWeather key={item.time_epoch} item={item} />
+                        ))}
+                    </div>
                 </div>
-                <p>The sunset is at {weather.forecast.forecastday[0].astro.sunset}</p>
+                
             </div>
         )        
 

@@ -77,3 +77,8 @@
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 655 638'%3E%3Cpath d='M40 0H392A40 40 0 0 1 432 40V95A40 40 0 0 0 472 135H615A40 40 0 0 1 655 175V598A40 40 0 0 1 615 638H229A40 40 0 0 1 189 598V245A40 40 0 0 0 149 205H40A40 40 0 0 1 0 165V40A40 40 0 0 1 40 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
+.main2{
+    width:100%;
+    padding: clamp(15px, 5vh, 30px) clamp(20px, 5vw, 50px);
+
+}
