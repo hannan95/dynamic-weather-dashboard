@@ -1,7 +1,10 @@
+import {useContext} from 'react'
+import {WeatherContext} from '../contexts/weatherContext.jsx'
 
 
 import '../css/HourWeather.css'
 export default function HourWeather({item}){
+    const { isCelcius } = useContext(WeatherContext)
 
     const CONDITION_GROUPS = [
         { codes: [1000], day: "☀️", night: "🌙" },
@@ -17,17 +20,20 @@ export default function HourWeather({item}){
         { codes: [1087, 1273, 1276, 1279, 1282], day: "⛈️", night: "⛈️" },
         ];
 
+
     function getWeatherEmoji(code, isDay) {
     const group = CONDITION_GROUPS.find(g => g.codes.includes(code));
     if (!group) return "🌡️"; // fallback for any new code
     return isDay ? group.day : group.night;
     }
 
+    const t = (c, f) => isCelcius ? c: f
+
     return(
         <div className='hourWeather' key={item.time_epoch}>
             <p>{item.time.slice(11, 16)}</p>
             <p>{getWeatherEmoji(item.condition.code, item.is_day)}</p>
-            <h4>{item.temp_c}°</h4>
+            <h4>{t(item.temp_c, item.temp_f)}°</h4>
         </div>
     )
 }

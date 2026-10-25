@@ -1,0 +1,19 @@
+.footer{
+    width: 100%;
+    background-color: #FEEECC;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30vh;
+    flex-wrap:wrap;
+    padding: 0 10px;
+}
+p{
+    font-size: 1rem;
+}
+
+p a{
+    font-style: none;
+    color: black;
+    /* text-decoration: none; */
+}

@@ -82,3 +82,8 @@
     padding: clamp(15px, 5vh, 30px) clamp(20px, 5vw, 50px);
 
 }
+.main3{
+    width: 100%;
+    padding: clamp(10px, 5vh, 30px) clamp(20px, 5vw, 50px);
+
+}

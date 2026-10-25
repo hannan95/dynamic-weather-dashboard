@@ -14,6 +14,7 @@ export default function WeatherCard({weather}){
         const COL = 80   // width of each hour column, in px
         const LINE_H = 60 // height of the line area, in px
         const {isCelcius, setIsCelcius} = useContext(WeatherContext)
+        const t = (c, f) => Math.round(isCelcius ? c : f)
 
         let now = new Date()
         const nextDay = now.getHours()
@@ -31,12 +32,12 @@ export default function WeatherCard({weather}){
                 <div className="currentWeather"> 
                     <div className="main2">
                         <h2><img src={image} alt="T" />{weather.location.name}</h2>
-                        <p className='temp'>{weather.current.temp_c}°</p>
+                        <p className='temp'>{t(weather.current.temp_c, weather.current.temp_f)}°</p>
                         <h3>{weather.current.condition.text}</h3>
                         <div className="highLow">
-                            <p>↑{weather.forecast.forecastday[0].day.maxtemp_c}° / ↓{weather.forecast.forecastday[0].day.mintemp_c}°</p>
+                            <p>↑{t(weather.forecast.forecastday[0].day.maxtemp_c, weather.forecast.forecastday[0].day.maxtemp_c)}° / ↓{t(weather.forecast.forecastday[0].day.mintemp_c, weather.forecast.forecastday[0].day.mintemp_f)}°</p>
                         </div>
-                        <h3>Feels like {weather.current.feelslike_c}°</h3>
+                        <h3>Feels like {t(weather.current.feelslike_c,weather.current.feelslike_f)}°</h3>
 
                     </div>
                 </div>

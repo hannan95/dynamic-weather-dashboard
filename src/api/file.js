@@ -1,14 +1,28 @@
 const baseUrl = 'https://api.weatherapi.com'
 const apiKey =  '757379751e3346a58f8130359262409'
+ 
+export async function searchWeather(city) {
+  const params = new URLSearchParams({ key: apiKey, q: city, days: 3 })
+  const url = `${baseUrl}/v1/forecast.json?${params}`
 
+  try {
+    const res = await fetch(url)
 
-
-export async function searchWeather(city){
-    const res =  await fetch(`${baseUrl}/v1/forecast.json?key=${apiKey}&q=${city}&days=7`)
     const data = await res.json()
+
+    if (!res.ok || data.error) {
+      throw new Error(data.error?.message || 'Failed to load data...')
+    }
     return data
-    
+  } catch (err) {
+    throw err
+  }
 }
+
+
+
+
+
 export async function getYesterdayWeather(city, localtime) {
   // localtime comes from your forecast response: weather.location.localtime
   const d = new Date(localtime.slice(0, 10) + "T00:00:00Z");
@@ -23,3 +37,5 @@ export async function getYesterdayWeather(city, localtime) {
 
   return data.forecast.forecastday[0]; // same shape as a forecast day
 }
+
+

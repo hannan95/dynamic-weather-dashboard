@@ -2,8 +2,12 @@
     font-family: 'Outfit', sans-serif;
     box-sizing: border-box;
     width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient( 180deg, aqua, white);
+    /* height: 100vh; */
+    background-image: linear-gradient( 180deg,  aqua 40%,  white 60%, #FEEECC);
+    
+}
+body{
+    margin: 0;
 }
 *{
     box-sizing: border-box;

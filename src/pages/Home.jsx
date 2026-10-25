@@ -11,33 +11,35 @@ import Forecast from '../components/Forecast.jsx'
 
 
 export default function Home(){
-    const [city, setCity] = useState('Sharjah')
-    const [weather, setWeather] = useState([])
+    const [city, setCity] = useState('London')
+    const [weather, setWeather] = useState(null)
     const [error, setError] = useState(null)
 
     const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
-        async function fetchData(){
+    useEffect(() => {
+
+    async function fetchData() {
+        try {
         const data = await searchWeather('london')
         setWeather(data)
+        } catch (err) {
+        } finally {
         setLoading(false)
+        }
     }
-    fetchData()
-    }, [])
-    console.log(weather)    
+  fetchData()
+}, [])
 
     async function handleSubmit(e){
-        console.log('submitted')
         e.preventDefault()
         try{
             const data = await searchWeather(city)
             setWeather(data)
-            console.log(`the data is: ${data}`)
+            setError(null)
         }
         catch(err){
-                console.log(err)
-                setError('Failed to load data...')
+                setError(`${err.message} ...`)
 
         }
         finally{
@@ -48,6 +50,7 @@ export default function Home(){
     }
     
     return(
+            
         <div className='Home'>
 
             <form className="form" onSubmit={handleSubmit}>
@@ -57,29 +60,30 @@ export default function Home(){
                 </div>
 
             </form>
-            
-            <div className="main">
 
-                {(loading)? <h1>Loading...</h1>:
-                    <WeatherCard weather={weather}/>
-                    
-                
-                }
-                <div className="sky-shape"></div>
+            {error ? (
+            <p className="error">{error}</p>
+            ) : loading && !weather ? (
+            <h1>Loading...</h1>
+            ) : (
+            weather && (
+                <>
+                <div className="main">
+                    <WeatherCard weather={weather} />
+                    <div className="sky-shape"></div>
+                </div>
+                <div className="main2">
+                    <Sunset weather={weather} />
+                </div>
+                <div className="main3">
+                    <Forecast weather={weather} />
+                </div>
+                </>
+            )
+            )}
 
-            </div>
 
-            <div className="main2">
-                {(loading)? <h1>Loading...</h1>:
-                <Sunset weather={weather}/>}
-            </div>
 
-            <div className="main3">
-                {(loading)? <h1>Loading...</h1>:
-                
-                    <Forecast weather={weather}/>
-                }
-            </div>
 
 
 
