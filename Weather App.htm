@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="Weather%20App_files/client_6B8i"></script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://localhost:5173/favicon.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="Weather%20App_files/css2_6B8i.css" rel="stylesheet">
+    <title>Weather App</title>
+  <style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/Home.css">.Home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+}
+/* input tag css */
+
+.group {
+ display: flex;
+ line-height: 28px;
+ align-items: center;
+ position: relative;
+ max-width: 190px;
+}
+
+.input {
+ width: 100%;
+ height: 40px;
+ line-height: 28px;
+ padding: 0 1rem;
+ padding-left: 2.5rem;
+ border: 2px solid transparent;
+ border-radius: 8px;
+ outline: none;
+ background-color: #f3f3f4;
+ color: #0d0c22;
+ transition: .3s ease;
+}
+
+.input::placeholder {
+ color: #9e9ea7;
+}
+
+.input:focus, input:hover {
+ outline: none;
+ border-color: rgba(234,76,137,0.4);
+ background-color: #fff;
+ box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+}
+
+.icon {
+ position: absolute;
+ left: 1rem;
+ fill: #9e9ea7;
+ width: 1rem;
+ height: 1rem;
+}
+
+
+
+.form input{
+    width: clamp(200px, 40vw, 800px);
+}
+
+.main{
+    display: flex;
+    width: 100%;
+    padding: clamp(15px, 5vh, 30px) clamp(20px, 5vw, 50px);
+    justify-content: space-between;
+    padding-right: clamp(20px, 10vw, 100px);
+
+}
+
+/* for the sky shape */
+.sky-shape {
+  width: 40%;
+  max-width: 600px;
+  aspect-ratio: 655 / 638;
+  background: url("/src/assets/sky.jpg") center / cover no-repeat;
+
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 655 638'%3E%3Cpath d='M40 0H392A40 40 0 0 1 432 40V95A40 40 0 0 0 472 135H615A40 40 0 0 1 655 175V598A40 40 0 0 1 615 638H229A40 40 0 0 1 189 598V245A40 40 0 0 0 149 205H40A40 40 0 0 1 0 165V40A40 40 0 0 1 40 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 655 638'%3E%3Cpath d='M40 0H392A40 40 0 0 1 432 40V95A40 40 0 0 0 472 135H615A40 40 0 0 1 655 175V598A40 40 0 0 1 615 638H229A40 40 0 0 1 189 598V245A40 40 0 0 0 149 205H40A40 40 0 0 1 0 165V40A40 40 0 0 1 40 0Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+
+.main2{
+    width:100%;
+    padding: clamp(15px, 5vh, 30px) clamp(20px, 5vw, 50px);
+
+}
+.main3{
+    width: 100%;
+    padding: clamp(10px, 5vh, 30px) clamp(20px, 5vw, 50px);
+
+}</style><style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/weatherCard.css">.currentWeather{
+    /* background-color: black; */
+    /* color: white; */
+    padding: clamp(10px 10vw, 50px);
+    /* background: rgba(255, 255, 255, 0.271); 
+    backdrop-filter: blur(10px);         
+    border: 1px solid rgba(255, 255, 255, 0.214);
+    border-radius: 12px; */
+    padding-left: clamp(20px, 10vw, 100px);
+    /* width: 40%; */
+    
+    
+}
+
+.currentWeather .main2 h2{
+    font-size: 1.5rem
+}
+
+.currentWeather .main2 h2 img{
+    height: 1.5rem;
+    width:1.5rem;
+}
+.currentWeather .main2 h3{
+    font-weight: normal;
+}
+
+.temp{
+    font-size: 2.5rem;
+    /* font-weight: bold; */
+}
+.wholeDay{
+    width: 50vw;
+    height: 300px;
+    /* background-color: orange; */
+    position: relative;
+    margin-left: clamp(20px, 8vw, 80px);
+    display:flex;
+
+    background: transparent;
+    backdrop-filter: blur(10px);
+
+    /* border: 1px solid black */
+
+
+}
+/* From Uiverse.io by joe-watson-sbf */ 
+
+.wholeDay::before,
+.wholeDay::after {
+  content: "";
+  background-color: #fab5704c;
+  position: absolute;
+}
+
+/* .wholeDay::before {
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  top: 30%;
+  right: 7%;
+} */
+
+/* .wholeDay::after {
+  content: "";
+  position: absolute;
+  height: 3rem;
+  top: 8%;
+  right: 5%;
+  border: 1px solid;
+} */
+
+.wholeDay .box {
+
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.074);
+  border: 1px solid rgba(255, 255, 255, 0.222);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 0.7rem;
+  transition: all ease 0.3s;
+}
+
+.wholeDay .box {
+  display: flex;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: white transparent;
+    width:100%;
+    height: 100%;
+    border: 1px solid white;
+}
+
+
+.wholeDay .box:hover {
+  box-shadow: 0px 0px 20px 1px #ffbb763f;
+  border: 1px solid rgba(255, 255, 255, 0.454);
+}
+
+
+
+
+
+
+
+
+
+/* .scroll-container {
+  display: flex;
+  gap: 12px;
+
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  padding: 12px;
+
+} */</style><style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/HourWeather.css">.hourWeather{
+    padding: 10px;
+    margin: 10px;
+}</style><style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/sunset.css">.sunset{
+    margin: 30px;
+    position: relative;
+    margin-left: clamp(20px, 8vw, 80px);
+    width: 70%;    
+    /* border: 1px solid rgba(255, 255, 255, 0.222); */
+    border: 1px solid rgb(255, 255, 255);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-radius: 0.7rem;
+    transition: all ease 0.3s;
+    padding: 10px;
+    box-shadow: 0px;
+
+}
+.sunset:hover{
+    box-shadow: 0px 0px 20px 1px #ffbb763f;
+    border: 1px solid rgba(255, 255, 255, 0.454);
+}
+
+.sunset .one{
+    font-size: 1.1rem;
+}
+
+.sunset .two{
+    font-size: 1.3rem;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/forecast.css">
+
+.forecast{
+    background-color: rgba(255, 255, 255, 0.074);
+    border: 1px solid rgba(255, 255, 255, 0.222);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 70%;    
+    margin-left: clamp(10px, 8vw, 80px);
+    transition: all 0.1s linear;
+    /* display: flex; */
+    /* justify-content: space-around; */
+
+
+}
+.forecast:hover{
+    box-shadow: 0px 0px 20px 1px #ffbb763f;
+    border: 1px solid rgba(255, 255, 255, 0.454);
+}
+
+
+
+.dayRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px clamp(5px, 6vw, 150px);
+
+
+}
+.dayName{
+    font-size: 1.5rem;
+
+}
+.dayRain{
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+.specs{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: space-around;
+    /* background-color: yellow; */
+    padding: 0 clamp(0px 3vw 30px)
+}
+
+.dayTemps{
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+  .dayName {
+    font-size: 1.2rem;          /* Optional: shrinks font to ~14px */
+  }
+  .dayTemps, .dayIcon{
+    font-size: 0.8rem;
+  }
+
+}
+
+</style><style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/Nav.css">.nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(15px, 10vh, 35px) clamp(25px, 10vw, 60px);
+
+
+}
+
+.nav .logo{
+    font-size: 2.5rem;
+    user-select: none;
+    font-weight: bold;
+}
+.nav .toggle{
+    display:flex;
+    /* border */
+}
+.nav .toggle p{
+    font-size: 1.1rem;
+    border: 1px solid #28282B;
+    cursor: pointer;
+    padding: 5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* border-radius: 10px; */
+    background-color: transparent;
+    box-shadow: none;
+    transition: all 0.1s linear;
+    overflow: hidden;
+    
+
+}
+.nav .toggle p.active{
+    /* background-color: aqua; */
+    box-shadow: 0px 5px 3px #28282B;
+    transition: all 0.1s linear;
+
+}
+.nav .toggle .Celcius{
+    border-radius: 10px 0px 0px 10px;
+
+}
+
+.nav .toggle .fehreinheit{
+    border-radius: 0px 10px 10px 0px;
+
+}
+
+
+.nav .toggle p::after{
+
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  translate: 0 105%;
+  background-color: aqua;
+  z-index: -1;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+.nav .toggle .Celcius.active::after{
+    translate: 0 0;
+}
+
+.nav .toggle .fehreinheit.active::after{
+    translate: 0 0;
+}
+
+/* .nav .toggle p.active::after{
+    content: '';
+    transform: scaleY(1)
+
+
+} */
+</style><style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/footer.css">.footer{
+    width: 100%;
+    background-color: #FEEECC;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30vh;
+    flex-wrap:wrap;
+    padding: 0 10px;
+}
+p{
+    font-size: 1rem;
+}
+
+p a{
+    font-style: none;
+    color: black;
+    /* text-decoration: none; */
+}</style><style type="text/css" data-vite-dev-id="C:/Users/dell/Desktop/Programming/NewProject/WeatherApp/weatherApp/src/css/Index.css">:root{
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+    width: 100vw;
+    /* height: 100vh; */
+    background-image: linear-gradient( 180deg,  aqua 40%,  white 60%, #FEEECC);
+    
+}
+body{
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+    
+}</style></head>
+  <body>
+    <div id="root"><div class="nav"><div class="logo">Weather</div><div class="toggle"><p class="Celcius active">°C</p><p class="fehreinheit ">°F</p></div></div><div class="Home"><form class="form"><div class="group"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg><input placeholder="Enter city..." class="input" type="search" value="sharjah"></div></form><p class="error">Failed to load data...</p></div><footer class="footer"><p>Weather data by <a href="https://www.weatherapi.com/" target="_blank" rel="noreferrer">WeatherAPI.com</a></p><p>© 2026 Hannan · <a href="https://github.com/hannan95/dynamic-weather-dashboard" target="_blank" rel="noreferrer">Source code</a></p></footer></div>
+    <script type="module" src="Weather%20App_files/main_6B8i.jsx"></script>
+  
+
+</body></html>

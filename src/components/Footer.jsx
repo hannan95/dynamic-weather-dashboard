@@ -1,4 +1,5 @@
 import '../css/footer.css'
+import footerImg from '../assets/footer2.png'
 export default function Footer({ weather }) {
   return (
     <footer className="footer">
@@ -15,6 +16,9 @@ export default function Footer({ weather }) {
           Source code
         </a>
       </p>
+      {/* <div className="image">
+        <img src={footerImg} alt="the footer" />
+      </div> */}
     </footer>
   );
 }
