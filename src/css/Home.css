@@ -7,6 +7,9 @@
     /* background-color: red; */
     display: flex;
     align-items: center;
+    /* background-color: black; */
+    /* width: 40%; */
+    /* justify-content: space-around; */
 }
 /* input tag css */
 
@@ -16,6 +19,8 @@
  align-items: center;
  position: relative;
  max-width: 190px;
+ margin-right: 5px;
+
 }
 
 .input {
@@ -42,6 +47,128 @@
  background-color: #fff;
  box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
 }
+
+/* use my location button */
+.button {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 35px;
+ position: relative;
+ padding: 0 5px;
+ margin-left: 1.5rem;
+ font-size: 0.9rem;
+ text-transform: uppercase;
+ border: 0;
+ box-shadow: hsl(210deg 87% 36%) 0px 7px 0px 0px;
+ background-color: #FF7F50;
+ border-radius: 12px;
+ overflow: hidden;
+ transition: 31ms cubic-bezier(.5, .7, .4, 1);
+ cursor: pointer;
+}
+
+.button:before {
+ content: attr(alt);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: absolute;
+ inset: 0;
+ font-size: 0.8rem;
+ font-weight: normal;
+ color: white;
+ opacity: 1;
+}
+
+.button:active {
+ box-shadow: none;
+ transform: translateY(7px);
+ transition: 35ms cubic-bezier(.5, .7, .4, 1);
+}
+
+.button:hover:before {
+ transition: all .0s;
+ transform: translateY(100%);
+ opacity: 0;
+}
+
+.button i {
+ color: white;
+ font-size: 0.8rem;
+ font-weight: normal;
+ font-style: normal;
+ transition: all 2s ease;
+ transform: translateY(-20px);
+ opacity: 0;
+}
+
+.button:hover i {
+ transition: all .2s ease;
+ transform: translateY(0px);
+ opacity: 1;
+}
+
+.button:hover i:nth-child(1) {
+ transition-delay: 0.045s;
+}
+
+.button:hover i:nth-child(3) {
+ transition-delay: calc(0.045s * 3);
+}
+
+.button:hover i:nth-child(4) {
+ transition-delay: calc(0.045s * 4);
+}
+
+.button:hover i:nth-child(5) {
+ transition-delay: calc(0.045s * 5);
+}
+
+.button:hover i:nth-child(7) {
+ transition-delay: calc(0.045s * 6);
+}
+
+.button:hover i:nth-child(8) {
+ transition-delay: calc(0.045s * 7);
+}
+
+.button:hover i:nth-child(10) {
+ transition-delay: calc(0.045s * 8);
+}
+
+.button:hover i:nth-child(11) {
+ transition-delay: calc(0.045s * 9);
+}
+
+.button:hover i:nth-child(12) {
+ transition-delay: calc(0.045s * 10);
+}
+
+.button:hover i:nth-child(13) {
+ transition-delay: calc(0.045s * 10);
+}
+.button:hover i:nth-child(14) {
+ transition-delay: calc(0.045s * 10);
+}
+.button:hover i:nth-child(15) {
+ transition-delay: calc(0.045s * 10);
+}
+.button:hover i:nth-child(16) {
+ transition-delay: calc(0.045s * 10);
+}
+.button:hover i:nth-child(17) {
+ transition-delay: calc(0.045s * 10);
+}
+/* .button:hover i:nth-child(10) {
+ transition-delay: calc(0.045s * 10);
+} */
+
+
+
+
+
+
 
 .icon {
  position: absolute;

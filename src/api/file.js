@@ -19,6 +19,23 @@ export async function searchWeather(city) {
   }
 }
 
+export function getUserLocation() {
+  return new Promise((resolve, reject) => {
+    if (!('geolocation' in navigator)) {
+      reject(new Error("Your browser doesn't support location"))
+      return
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve(`${pos.coords.latitude},${pos.coords.longitude}`),
+      (err) => {
+        if (err.code === 1) reject(new Error('Location permission was denied'))
+        else if (err.code === 3) reject(new Error('Getting your location timed out'))
+        else reject(new Error("Couldn't get your location"))
+      },
+      { timeout: 10000 }
+    )
+  })
+}
 
 
 
